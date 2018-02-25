@@ -5,8 +5,16 @@ import bodyParser from 'koa-bodyparser';
 import json from 'koa-json';
 import logger from 'koa-logger';
 
+/* 引入路由文件 */
+
+import backendRoutes from './routes/backend';
+
 const app = new Koa();
 const router = new Router();
+
+const backendRouter = new Router({
+  prefix: '/api',
+});
 
 // 中间件
 app.use(bodyParser());
@@ -28,6 +36,10 @@ router.get('/', async (ctx, next) => {
   };
 });
 app.use(router.routes()).use(router.allowedMethods());
+
+// 路由中间件
+app.use(backendRouter.routes(), backendRouter.allowedMethods());
+backendRoutes(backendRouter);
 
 // error logger
 app.on('error', async (err, ctx) => {
