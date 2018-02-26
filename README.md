@@ -15,3 +15,4 @@
 
 1. [sequelize-docs](https://demopark.github.io/sequelize-docs-Zh-CN/)
 2. [koa2-with-sequelize](https://github.com/fengyun2/koa2-with-sequelize)
+3. [sequlize_model_relation_demo](https://github.com/itbilu/sequlize_model_relation_demo)

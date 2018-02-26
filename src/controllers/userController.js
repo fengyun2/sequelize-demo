@@ -8,7 +8,6 @@ const { User } = Model;
 
 // 添加用户
 const add = async (ctx) => {
-  console.log('add user: ', ctx.request.body);
   const { name, nick_name, password: oldPassword = '' } = ctx.request.body;
   if (!name) {
     ctx.body = {
@@ -19,7 +18,6 @@ const add = async (ctx) => {
     return;
   }
   if (!oldPassword) {
-    console.log('xxxxx');
     ctx.body = {
       code: 401,
       message: '密码不能为空',
@@ -29,17 +27,17 @@ const add = async (ctx) => {
   }
   const password = md5(oldPassword);
   try {
-    const user = await User.build({
-      name,
-      nick_name,
-      password,
-    });
-    await user.save();
-    // const user = await User.save({
+    // const user = await User.build({
     //   name,
     //   nick_name,
     //   password,
     // });
+    // await user.save();
+    const user = await User.create({
+      name,
+      nick_name,
+      password,
+    });
     ctx.body = {
       code: 200,
       message: '添加用户成功',
