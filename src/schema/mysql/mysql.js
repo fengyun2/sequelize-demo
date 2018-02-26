@@ -20,6 +20,10 @@ const sequelize = new Sequelize(
     port: mysqlConfig.port,
     logging: console.log, // logging-option should be either a function or false
     freezeTableName: true,
+    paranoid: true, // 虚拟删除。启用该配置后，数据不会真实删除，而是添加一个deletedAt属性
+    charset: 'utf8',
+    collate: 'utf8_general_ci',
+    comment: '用户表',
     define: {
       // 字段以下划线（_）来分割（默认是驼峰命名风格）
       underscored: true,

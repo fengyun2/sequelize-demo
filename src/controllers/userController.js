@@ -1,6 +1,8 @@
-import User from '../schema/mysql/user';
+// import User from '../schema/mysql/user';
+import Model from '../schema/mysql';
 import { sequelize, Sequelize } from '../schema/mysql/mysql';
 
+const User = Model.User;
 const Op = Sequelize.Op;
 
 // 添加用户
