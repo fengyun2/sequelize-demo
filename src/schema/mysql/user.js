@@ -42,7 +42,7 @@ const User = sequelize.define(
 );
 
 // User.sync(); // 创建表
-const createRes = User.sync({ force: true }); // 创建表
+const createRes = User.sync({ force: false }); // 创建表
 
 createRes
   .then((res) => {
