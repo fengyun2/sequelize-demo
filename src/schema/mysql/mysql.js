@@ -5,7 +5,7 @@
 import Sequelize from 'sequelize';
 import config from 'config';
 
-const Op = Sequelize.Op;
+const { Op } = Sequelize;
 
 Sequelize.Promise = Promise;
 

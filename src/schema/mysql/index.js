@@ -1,4 +1,4 @@
-import { sequelize, Sequelize } from './mysql';
+import { sequelize } from './mysql';
 
 const User = sequelize.import('./user');
 const UserAddress = sequelize.import('./userAddress');
@@ -23,7 +23,9 @@ User.belongsToMany(Role, { through: 'userRoles', as: 'UserRoles' });
 Role.belongsToMany(User, { through: 'userRoles', as: 'UserRoles' });
 
 // 同步模型到数据库中
-sequelize.sync();
+sequelize.sync({
+  // force: true,
+});
 
 export default {
   User,
